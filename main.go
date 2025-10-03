@@ -30,6 +30,7 @@ func execInput(input string) error {
 
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = os.Stdout
+	cmd.Stdin = os.Stdin
 
 	return cmd.Run()
 }
@@ -39,14 +40,14 @@ func main() {
 
 	for {
 		fmt.Print("> ")
-        // Read the keyboad input.
-        input, err := reader.ReadString('\n')
-        if err != nil {
-            fmt.Fprintln(os.Stderr, err)
-        }
+		// Read the keyboad input.
+		input, err := reader.ReadString('\n')
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+		}
 
 		if err = execInput(input); err != nil {
 			fmt.Fprintln(os.Stderr, err)
 		}
-    }
+	}
 }
